@@ -6,11 +6,9 @@ async function render() {
       return res.json();
     })
     .then(function (data) {
-      // for (let index = 0; index < data.length; index++) {
-      //   population.push(data[index].name.official);
-      // }
       for (let j = 0; j < data.length; j++) {
         if (data[j].region == "Europe") {
+          console.log(data[j]);
           let html = document.getElementById("result");
           let li_pays = document.createElement("li");
           li_pays.textContent = data[j].name.official;
