@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="icon" type="image/x-icon" href="img/fav.ico" />
+    <title>Eu - European region countries</title>
+  </head>
+  <body onload="render()">
+    <nav
+      class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark sticky-top"
+    >
+      <div class="container">
+        <div class="navbar-brand mx-md-5">
+          <a href="#" class="text-decoration-none text-white">Eu</a>
+        </div>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navcol"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navcol"></div>
+    </nav>
+
+    <div class="px-5">
+      <h1>European region countries</h1>
+      <p>
+        Made with HTML5 and vanilla Javascript with the help of
+        <a
+          href=" https://getbootstrap.com/docs/5.0/getting-started/introduction/"
+          >bootstrap 5</a
+        >
+      </p>
+      <h2>List of countries</h2>
+      <ul class="px-4" id="result">
+        <!-- li pays -->
+      </ul>
+
+      <p>Source: <a href=" https://restcountries.com/ ">REST Countries.</a></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
