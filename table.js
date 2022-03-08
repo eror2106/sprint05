@@ -1,30 +1,44 @@
-const countriesAPI = "https://restcountries.com/v3.1/region/europe";
 async function render() {
-  let serv = await fetch(countriesAPI);
-  let pays = await serv.json();
-  for (let j in pays) {
-    let tableau = document.getElementById("result");
-    let tr_personne = document.createElement("tr"); //parent
-    let nom_pays = document.createElement("td"); //enfant
-    let area = document.createElement("td"); //enfant
-    let population = document.createElement("td"); //enfant
-    let capital = document.createElement("td"); //enfant
+  let pays;
 
-    nom_pays.textContent = pays[j].name.official;
-    area.textContent = nombre(pays[j].area);
-    population.textContent = nombre(pays[j].population);
-    capital.textContent = pays[j].capital;
+  try {
+    const serv = await fetch("https://restcountries.com/v3.1/region/europe");
+    if (serv.status == 404) {
+      console.error(" un soucis a été detecté avec l'api");
+      document.getElementById("erreur").innerHTML =
+        "un soucis a été detecté aveci";
+    }
 
-    //ajout dan lhtml
-    nom_pays.className = "d-sm-block fw-bolder text-nowrap";
-    capital.className = "d-sm-block text-nowrap";
-    area.className = "text-end";
-    population.className = "text-end";
-    tableau.appendChild(tr_personne);
-    tr_personne.appendChild(nom_pays);
-    tr_personne.appendChild(area);
-    tr_personne.appendChild(population);
-    tr_personne.appendChild(capital);
+    pays = await serv.json();
+
+    for (let j in pays) {
+      let tableau = document.getElementById("result");
+      let tr_personne = document.createElement("tr"); //parent
+      let nom_pays = document.createElement("td"); //enfant
+      let area = document.createElement("td"); //enfant
+      let population = document.createElement("td"); //enfant
+      let capital = document.createElement("td"); //enfant
+
+      nom_pays.textContent = pays[j].name.official;
+      area.textContent = nombre(pays[j].area);
+      population.textContent = nombre(pays[j].population);
+      capital.textContent = pays[j].capital;
+
+      //ajout dan lhtml
+      nom_pays.className = "d-sm-block fw-bolder text-nowrap";
+      capital.className = "d-sm-block text-nowrap";
+      area.className = "text-end";
+      population.className = "text-end";
+      tableau.appendChild(tr_personne);
+      tr_personne.appendChild(nom_pays);
+      tr_personne.appendChild(area);
+      tr_personne.appendChild(population);
+      tr_personne.appendChild(capital);
+    }
+  } catch (error) {
+    console.error(" un soucis a été detecté avec l'api");
+    document.getElementById("erreur").innerHTML =
+      "un soucis a été detecté avec l'api";
   }
 }
 render();
