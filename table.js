@@ -4,9 +4,8 @@ async function render() {
   try {
     const serv = await fetch("https://restcountries.com/v3.1/region/europe");
     if (serv.status == 404) {
-      console.error(" un soucis a été detecté avec l'api");
       document.getElementById("erreur").innerHTML =
-        "un soucis a été detecté aveci";
+        "un soucis a été detecté avec l'api";
     }
 
     pays = await serv.json();
@@ -36,13 +35,20 @@ async function render() {
       tr_personne.appendChild(capital);
     }
   } catch (error) {
-    console.error(" un soucis a été detecté avec l'api");
+    let btn = document.getElementById("err");
+    btn.innerHTML =
+      "<button type=button class=btn-warning >" + "Reload" + "</button>";
+    btn.setAttribute("onclick", "clic()");
+    console.error("dans le catch", error);
+
     document.getElementById("erreur").innerHTML =
       "un soucis a été detecté avec l'api";
   }
 }
 render();
-
+function clic() {
+  location.reload();
+}
 function nombre(nb) {
   let lol = nb.toString();
   let tour = 0;
