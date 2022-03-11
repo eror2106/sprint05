@@ -24,18 +24,8 @@ async function render() {
       ).innerHTML += `<li>${pays[j].name.official}</li>`;
     }
   } catch (error) {
-    let btn = document.getElementById("err");
-    btn.innerHTML =
-      "<button type=button class=btn-warning >" + "Reload" + "</button>";
-    btn.setAttribute("onclick", "clic()");
-    console.error("dans le catch", error);
-
     document.getElementById("erreur").innerHTML =
       "un soucis a été detecté avec l'api";
   }
 }
 render();
-
-function clic() {
-  location.reload();
-}
